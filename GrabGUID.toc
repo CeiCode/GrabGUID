@@ -1,0 +1,8 @@
+## Interface: 113506
+## Title: GrabGUID
+## Notes: Retrieve GUIDs of players or creatures (for developers and addon creators).
+## Author: ruff_desperado
+## Version: 1.0
+## DefaultState: enabled
+
+GrabGUID.lua
