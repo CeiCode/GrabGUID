@@ -10,7 +10,7 @@ DelayedPrint("|cffffff00[Grab GUID]|r loaded. Use |cff00ff00/gg|r or |cff00ff00/
 
 -- Create the main frame
 local mainFrame = CreateFrame("Frame", "GrabGUID_MainFrame", UIParent, "BasicFrameTemplate")
-mainFrame:SetSize(240, 100)
+mainFrame:SetSize(280, 110)
 mainFrame:SetPoint("CENTER")
 mainFrame:SetMovable(true)
 mainFrame:EnableMouse(true)
@@ -18,6 +18,11 @@ mainFrame:RegisterForDrag("LeftButton")
 mainFrame:SetScript("OnDragStart", mainFrame.StartMoving)
 mainFrame:SetScript("OnDragStop", mainFrame.StopMovingOrSizing)
 mainFrame:Hide()  -- Hide the main frame by default
+
+-- Set the title for BasicFrameTemplate
+mainFrame.title = mainFrame:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
+mainFrame.title:SetPoint("CENTER", mainFrame.TitleBg, "CENTER", 0, -1)
+mainFrame.title:SetText("GrabGUID Tool")
 
 -- Function to grab target's GUID or offline player's GUID
 local function GrabGUID()
@@ -61,15 +66,10 @@ local function GrabGUID()
     end
 end
 
--- Create the text label for the main frame
-mainFrame.label = mainFrame:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
-mainFrame.label:SetPoint("TOPLEFT", mainFrame, "TOPLEFT", 17, -5)
-mainFrame.label:SetText("Select target or input player name here:")
-
 -- Create the edit box for the main frame
 mainFrame.infoBox = CreateFrame("EditBox", "GrabGUID_MainEditBox", mainFrame, "InputBoxTemplate")
-mainFrame.infoBox:SetSize(198, 30) 
-mainFrame.infoBox:SetPoint("TOPLEFT", mainFrame.label, "BOTTOMLEFT", 5, -10)
+mainFrame.infoBox:SetSize(230, 30) 
+mainFrame.infoBox:SetPoint("TOPLEFT", mainFrame, "TOPLEFT", 25, -25)
 mainFrame.infoBox:SetAutoFocus(false)
 mainFrame.infoBox:SetFontObject(GameFontHighlightSmall)
 mainFrame.infoBox:SetTextInsets(0, 0, 0, 0)
